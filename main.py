@@ -203,3 +203,45 @@ print("(Bottom-Left: Wrongly guessed Stay | Bottom-Right: Correctly guessed Chur
 # 3. Classification Report (Detailed stats like precision and recall)
 print("\n--- Classification Report ---")
 print(classification_report(y_test, y_pred, zero_division=0))
+
+# --- Step 10: Manual Prediction ---
+print("\n" + "="*30)
+print("Step 10: Manual Prediction")
+print("="*30)
+
+# Let's create a fake customer to see what the model thinks.
+# We must provide the exact 10 features the model was trained on:
+# ['CreditScore', 'Geography', 'Gender', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 'HasCrCard', 'IsActiveMember', 'EstimatedSalary']
+
+# Example Customer 1: Young, active member, good balance (Likely to STAY)
+# Geography: France=0, Gender: Female=0
+customer_1 = [[600, 0, 0, 25, 3, 50000.0, 2, 1, 1, 40000.0]]
+
+# Example Customer 2: Older, inactive, high balance but low products (Likely to CHURN)
+# Geography: Germany=1, Gender: Male=1
+customer_2 = [[400, 1, 1, 60, 2, 150000.0, 1, 1, 0, 80000.0]]
+
+# Convert to a DataFrame so it matches training data format exactly
+import pandas as pd
+custom_data_1 = pd.DataFrame(customer_1, columns=X.columns)
+custom_data_2 = pd.DataFrame(customer_2, columns=X.columns)
+
+# Predict!
+pred_1 = model.predict(custom_data_1)[0]
+pred_2 = model.predict(custom_data_2)[0]
+
+print("--- Testing Fake Customers ---")
+
+# Display results for Customer 1
+print("\nCustomer 1 Profile: Young, Active, Decent Balance")
+if pred_1 == 1:
+    print("Prediction: \033[91mCUSTOMER WILL CHURN (Leave)\033[0m")
+else:
+    print("Prediction: \033[92mCUSTOMER WILL STAY\033[0m")
+
+# Display results for Customer 2
+print("\nCustomer 2 Profile: Older, Inactive, High Balance")
+if pred_2 == 1:
+    print("Prediction: \033[91mCUSTOMER WILL CHURN (Leave)\033[0m")
+else:
+    print("Prediction: \033[92mCUSTOMER WILL STAY\033[0m")
