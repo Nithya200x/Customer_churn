@@ -181,3 +181,25 @@ print("Customer | Actual (0=Stay, 1=Churn) | Predicted (0=Stay, 1=Churn)")
 print("-" * 65)
 for i in range(10):
     print(f"   {i+1:<5} | {actual_values[i]:<25} | {predicted_values[i]}")
+
+# --- Step 9: Model Evaluation ---
+print("\n" + "="*30)
+print("Step 9: Model Evaluation")
+print("="*30)
+
+# Import metrics from scikit-learn
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# 1. Accuracy Score (Overall percentage of correct guesses)
+acc = accuracy_score(y_test, y_pred)
+print(f"Accuracy Score: {acc * 100:.2f}%\n")
+
+# 2. Confusion Matrix (Breaks down exactly what it got right/wrong)
+print("--- Confusion Matrix ---")
+print(confusion_matrix(y_test, y_pred))
+print("\n(Top-Left: Correctly guessed Stay | Top-Right: Wrongly guessed Churn)")
+print("(Bottom-Left: Wrongly guessed Stay | Bottom-Right: Correctly guessed Churn)")
+
+# 3. Classification Report (Detailed stats like precision and recall)
+print("\n--- Classification Report ---")
+print(classification_report(y_test, y_pred, zero_division=0))
