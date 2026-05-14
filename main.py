@@ -142,3 +142,22 @@ print("y_train shape (80% target):", y_train.shape)
 print("\n--- Testing Data ---")
 print("X_test shape (20% features):", X_test.shape)
 print("y_test shape (20% target):", y_test.shape)
+
+# --- Step 7: Model Training ---
+print("\n" + "="*30)
+print("Step 7: Model Training")
+print("="*30)
+
+# Import the Logistic Regression model
+from sklearn.linear_model import LogisticRegression
+
+# 1. Create the model
+# max_iter=1000 gives the model enough time to find the best pattern
+model = LogisticRegression(max_iter=1000, random_state=42)
+
+# 2. Train the model using the training data!
+print("Training the Logistic Regression model... (this takes a second)")
+model.fit(X_train, y_train)
+
+print("Model training complete!")
+
