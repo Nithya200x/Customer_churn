@@ -161,3 +161,23 @@ model.fit(X_train, y_train)
 
 print("Model training complete!")
 
+# --- Step 8: Prediction ---
+print("\n" + "="*30)
+print("Step 8: Prediction")
+print("="*30)
+
+# Ask the model to predict 'Exited' (churn) for the 1000 testing rows
+print("Making predictions on the testing data...")
+y_pred = model.predict(X_test)
+
+# Display a few sample predictions compared to the actual answers
+print("\n--- Sample Predictions ---")
+
+# We convert them to lists just so they print nicely side-by-side
+actual_values = y_test.head(10).tolist()
+predicted_values = y_pred[:10].tolist()
+
+print("Customer | Actual (0=Stay, 1=Churn) | Predicted (0=Stay, 1=Churn)")
+print("-" * 65)
+for i in range(10):
+    print(f"   {i+1:<5} | {actual_values[i]:<25} | {predicted_values[i]}")
