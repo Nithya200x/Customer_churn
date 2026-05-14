@@ -1,58 +1,112 @@
 # 📊 Customer Churn Prediction System
 
-A beginner-friendly Machine Learning web application to predict whether a customer will **churn (leave)** or **stay** using the Maven Analytics Customer Churn Dataset.
+A Machine Learning project that predicts whether a customer is likely to **churn (leave)** or **stay** using customer banking data.
+
+Built using **Python**, **Scikit-learn**, and **Streamlit**.
 
 ---
 
-## 🎯 Project Description
+## 🚀 Features
 
-This project analyzes customer data (such as age, balance, credit score, and tenure) to predict the likelihood of a customer leaving the service. It includes a complete **Streamlit** frontend for an interactive and user-friendly experience.
-
----
-
-## ✨ Features
-
-- **Interactive UI:** Built with Streamlit for a clean, modern look.
-- **Dataset Overview:** View raw data directly in the app.
-- **Data Visualizations:** Built-in charts (Churn Count, Age, Balance).
-- **Machine Learning Model:** Uses Logistic Regression trained dynamically.
-- **Custom Predictions:** Input your own customer data using sliders and dropdowns to get instant predictions and probabilities.
+- 📁 Dataset loading and analysis
+- 🧹 Data cleaning and preprocessing
+- 📊 Interactive visualizations
+- 🤖 Logistic Regression model
+- 🔮 Customer churn prediction
+- 🌐 Streamlit web interface
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Python** - Core language
-- **Streamlit** - Web framework for UI
-- **Pandas** - Data manipulation
-- **Matplotlib** - Data visualization
-- **Scikit-learn** - Machine Learning (Logistic Regression)
+- Python
+- Pandas
+- Matplotlib
+- Scikit-learn
+- Streamlit
 
 ---
 
-## 🚀 How to Run Locally
+## 📂 Project Structure
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Nithya200x/Customer_churn.git
-   cd Customer_churn
-   ```
-
-2. **Install requirements:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Run the Streamlit Web App:**
-   ```bash
-   streamlit run app.py
-   ```
-
-*(Alternatively, you can run the command-line version via `python main.py`)*
+```bash
+Customer_churn/
+│
+├── app.py
+├── main.py
+├── requirements.txt
+├── README.md
+└── Churn_Modelling.csv
+```
 
 ---
 
-## 🐙 GitHub Usage Steps
-1. Add files: `git add .`
-2. Commit changes: `git commit -m "Add Streamlit Frontend"`
-3. Push to GitHub: `git push origin main`
+## 🧠 ML Algorithm Used
+
+### Logistic Regression
+
+Used for predicting:
+- `1 → Customer Will Churn`
+- `0 → Customer Will Stay`
+
+---
+
+## 📊 Visualizations Included
+
+- Churn Count Plot
+- Age Distribution
+- Balance Distribution
+
+---
+
+## ⚙️ How to Run
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/Nithya200x/Customer_churn.git
+cd Customer_churn
+```
+
+### 2. Install Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🎯 Project Workflow
+
+1. Load Dataset  
+2. Clean Data  
+3. Visualize Data  
+4. Train ML Model  
+5. Predict Customer Churn  
+6. Display Results  
+
+---
+
+## 💡 Future Improvements
+
+- Add more ML models
+- Deploy online
+- Improve UI
+- Add real-time predictions
+
+---
+
+## 👩‍💻 Author
+
+### Nithya Priya S
+
+GitHub:  
+https://github.com/Nithya200x
+
+---
