@@ -69,7 +69,7 @@ plt.xlabel("Churn Status")                          # X-axis label
 plt.ylabel("Number of Customers")                   # Y-axis label
 plt.tight_layout()
 plt.savefig("churn_count_plot.png")                 # Save chart as image
-plt.show()
+plt.close()                                         # Close chart (no popup)
 print("Chart 1 saved: churn_count_plot.png")
 
 # ---- Graph 2: Balance Histogram ----
@@ -84,5 +84,61 @@ plt.xlabel("Balance")                               # X-axis label
 plt.ylabel("Number of Customers")                   # Y-axis label
 plt.tight_layout()
 plt.savefig("balance_histogram.png")                # Save chart as image
-plt.show()
+plt.close("all")                                    # Close all chart windows (no popup)
 print("Chart 2 saved: balance_histogram.png")
+
+# --- Step 5: Data Preprocessing ---
+print("\n" + "="*30)
+print("Step 5: Data Preprocessing")
+print("="*30)
+
+# Import LabelEncoder to convert text columns into numbers
+# (Machine Learning models only understand numbers, not text)
+from sklearn.preprocessing import LabelEncoder
+
+le = LabelEncoder()  # Create a LabelEncoder object
+
+# Convert "Geography" column: e.g. France=0, Germany=1, Spain=2
+data["Geography"] = le.fit_transform(data["Geography"])
+
+# Convert "Gender" column: e.g. Female=0, Male=1
+data["Gender"] = le.fit_transform(data["Gender"])
+
+# Drop columns that are NOT useful for prediction
+# RowNumber, CustomerId, Surname are just IDs — not real patterns
+data = data.drop(["RowNumber", "CustomerId", "Surname"], axis=1)
+
+# Separate features (X) and target (y)
+# X = all columns the model learns from
+# y = the column we want to predict (Exited: 0=stayed, 1=churned)
+X = data.drop("Exited", axis=1)   # All columns except Exited
+y = data["Exited"]                 # Only the Exited column
+
+print("\nFeatures (X) — columns used for prediction:")
+print(X.columns.tolist())
+
+print("\nTarget (y) — column we are predicting:")
+print(y.name)
+
+print("\nShape of X:", X.shape)
+print("Shape of y:", y.shape)
+
+# --- Step 6: Train-Test Split ---
+print("\n" + "="*30)
+print("Step 6: Train-Test Split")
+print("="*30)
+
+# Import train_test_split
+from sklearn.model_selection import train_test_split
+
+# Split data into 80% for training and 20% for testing
+# random_state=42 ensures we get the same split every time we run the code
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
+
+print("\n--- Training Data ---")
+print("X_train shape (80% features):", X_train.shape)
+print("y_train shape (80% target):", y_train.shape)
+
+print("\n--- Testing Data ---")
+print("X_test shape (20% features):", X_test.shape)
+print("y_test shape (20% target):", y_test.shape)
